@@ -1,27 +1,124 @@
 'use strict';
 
-var React = require('react'),
-    ReactDOM = require('react-dom');
+var React = require('react');
+
+// Components
+var Modal = require('../Common/modal.jsx'),
+    DayPicker = require('react-day-picker').default,
+    DateUtils = require('react-day-picker').DateUtils,
+    moment = require('moment');
 
 var Search = React.createClass({
+    getInitialState: function () {
+        return ({
+            from: null,
+            to: null,
+            formFieldInvalid: null,
+            toFieldInvalid: null
+        });
+    },
+    openPickerModal: function () {
+        $('#pickerModal').modal();
+    },
+    handleDayClick: function (e, day, modifiers) {
+        var range = DateUtils.addDayToRange(day, this.state);
+        this.setState(range, function () {
+            this.validForm();
+        });
+    },
+    validForm: function () {
+        this.setState({
+            formFieldInvalid: this.state.from === null,
+            toFieldInvalid: this.state.to === null
+        });
+        
+        return this.state.from && this.state.to;
+    },
+    handleFormSubmit: function (e) {
+        e.preventDefault();
+        
+        if(this.validForm()) {
+            this.setState({
+                loading: true
+            });
+            
+            setTimeout(function () {
+                
+                this.setState({
+                    loading: false
+                });
+                
+                // Set searchResults into the root component
+                this.props.setSearchResults([]);
+                
+            }.bind(this), 3000);
+        }
+    },
+    handleReset: function () {
+        this.setState({
+            from: null,
+            to: null,
+            formFieldInvalid: null,
+            toFieldInvalid: null
+        });
+    },
+    isSelected: function (that, state, day) {
+        return DateUtils.isDayInRange(day, state);
+    },
     render: function () {
+        var data = this.props.data,
+            state = this.state,
+            openPickerModal = this.openPickerModal,
+            handleDayClick = this.handleDayClick,
+            handleFormSubmit = this.handleFormSubmit,
+            handleReset = this.handleReset,
+            websites = data.map(function(website, index) {
+                return (
+                    <div key={index} className="search__footer__websites__single col-xs-4"><div className="content"><img src={website.img}/></div></div>
+                )
+            }),
+            websitesModal = {
+                header: 'Offer Websites',
+                body: websites,
+                buttons: null,
+                id: 'websitesModal'
+            },
+            pickerModal = {
+                header: 'Please pick from and to dates',
+                body: (
+                    <div>
+                        <DayPicker numberOfMonths={ 2 } modifiers={{disabled: DateUtils.isPastDay, selected: this.isSelected.bind(null, this, state)}} 
+                            onDayClick={handleDayClick}/>
+                    </div>
+                ),
+                buttons: (
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-default" data-dismiss="modal" onClick={handleReset}>Reset & Close</button>
+                        <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                    </div>
+                ),
+                id: 'pickerModal'
+            };
+        
         return (
-            <div className="search">
+            <div className={"search " + (state.loading ? 'search--loading' : '')}>
                 <h2 className="search__title">Select dates to view all prices</h2>
                 <h5 className="search__subTitle">Park Plaza Victoria Amsterdam</h5>
-                <form className="search__form">
+                <form className="search__form" onSubmit={handleFormSubmit}>
                     <div className="row form-group">
                         <div className="col-xs-6">
-                            <div className="customField">
+                            <div className={"customField " + (state.formFieldInvalid ? 'customField--error' : '')} onClick={openPickerModal}>
                                 <label className="fa fa-calendar" htmlFor="checkIn"></label>
-                                <input className="form-control" id="checkIn" placeholder="Check-in"/>
+                                <input className="form-control" id="checkIn" placeholder="Check-in" 
+                                    onChange={openPickerModal} value={state.from ? moment(state.from).format('L') : ''}/>
                                 <label className="fa fa-sort" htmlFor="checkIn"></label>
                             </div>
                         </div>
                         <div className="col-xs-6">
-                            <div className="customField">
+                            <div className={"customField " + (state.toFieldInvalid ? 'customField--error' : '')} onClick={openPickerModal}>
                                 <label className="fa fa-calendar" htmlFor="checkOut"></label>
-                                <input className="form-control" id="checkOut" placeholder="Check-out"/>
+                                <input className="form-control" id="checkOut" placeholder="Check-out" 
+                                    onChange={openPickerModal} value={state.to ? moment(state.to).format('L') : ''}/>
                                 <label className="fa fa-sort" htmlFor="checkOut"></label>
                             </div>
                         </div>
@@ -42,12 +139,13 @@ var Search = React.createClass({
                 <div className="search__footer">
                     <h5 className="search__footer__title">The best prices are offered by:</h5>
                     <div className="search__footer__websites clearfix">
-                        <div className="col-xs-4"><div className="content"><img src="http://logonoid.com/images/hotels-com-logo.png"/></div></div>
-                        <div className="col-xs-4"><div className="content"><img src="http://r-ec.bstatic.com/static/img/tfl/group_logos/logo_rentalcars/6bc5ec89d870111592a378bbe7a2086f0b01abc4.png"/></div></div>
-                        <div className="col-xs-4"><div className="content"><img src="http://r-ec.bstatic.com/static/img/tfl/group_logos/logo_opentable/a4b50503eda6c15773d6e61c238230eb42fb050d.png"/></div></div>
+                        {websites.slice(0, 3)}
                     </div>
-                    <h5 className="search__footer__others">and 4 other websites!</h5>
+                    <h5 className="search__footer__others" data-toggle="modal" data-target="#websitesModal">and 4 other websites!</h5>
                 </div>
+                
+                <Modal modal={websitesModal} />
+                <Modal modal={pickerModal} />
             </div>
         );
     }

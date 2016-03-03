@@ -1,0 +1,156 @@
+.search {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    background: $blue;
+    padding: 30px;
+    box-shadow: 0 0 15px #131313;
+    
+    &--loading {
+        &:after {
+            display: block;
+            width: 100%;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.8) url(http://loadinggif.com/images/image-selection/3.gif) no-repeat center;
+        }
+    }
+
+    @include between($smallBp, $mediumBp) {
+        padding: 25px;
+    }
+
+    @include smallerThan($xSmallBp) {
+        position: relative;
+        width: 100%;
+    }
+
+    &__title, &__subTitle {
+        text-align: center;
+        margin: 0;
+        color: #fff;
+        font-weight: bold;
+        font-size: 22px;
+
+        @include between($smallBp, $mediumBp) {
+            font-size: 18px;
+        }
+
+        @include smallerThan($smallBp) {
+            font-size: 18px;
+        }
+    }
+
+    &__subTitle {
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: normal;
+    }
+
+    &__form {
+        margin-top: 20px;
+
+        .row {
+            [class*="col-"] {
+                &:first-child {
+                    padding-right: 7px;
+                }
+                &:last-child {
+                    padding-left: 7px;
+                }
+            }
+        }
+
+        input, select {
+            height: 40px;
+            box-shadow: 0 0 0;
+            border: 0;
+            padding: 0;
+
+            @include between($smallBp, $mediumBp) {
+                height: 35px;
+            }
+        }
+
+        button {
+            background: $orange;
+            height: 55px;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 2px #5D5D5D;
+            transition: background 0s ease;
+
+            &:hover {
+                background: #FFDF5A;
+            }
+
+            @include between($smallBp, $mediumBp) {
+                height: 40px;
+                font-size: 17px;
+            }
+        }
+    }
+
+    &__footer {
+        margin-top: 40px;
+
+        @include between($smallBp, $mediumBp) {
+            margin-top: 25px;
+        }
+
+        &__title, &__others {
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        &__others {
+            font-weight: normal;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__websites {
+            margin: 18px -7px;
+
+            @include between($smallBp, $mediumBp) {
+                margin: 10px -7px;
+            }
+
+            @include smallerThan($smallBp) {
+                margin: 15px -7px;
+            }
+
+            &__single {
+                padding: 0 7px;
+                height: 40px;
+                display: table;
+
+                .content {
+                    vertical-align: middle;
+                    background: #fff;
+                    border-radius: 4px;
+                    text-align: center;
+                    display: table-cell;
+
+                    img {
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}

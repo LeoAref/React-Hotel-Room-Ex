@@ -1,24 +1,42 @@
 'use strict';
 
-var React = require('react'),
-    ReactDOM = require('react-dom');
+var React = require('react');
 
 var Slider = React.createClass({
+    getInitialState: function () {
+        return ({
+            activeThumb: 3
+        });
+    },
+    setImage: function (index) {
+        var data = this.props.data;
+        
+        /*
+         * Later we will get {large} image src,
+         * and replace it with the {main} image src
+         * but we don't have actual data at this stage
+         */
+        
+        this.setState({
+            activeThumb: index
+        });
+    },
     render: function () {
+        var data = this.props.data,
+            state = this.state,
+            setImage = this.setImage,
+            thums = data.thumbnails.map(function(thumb, index) {
+                return (
+                    <li key={index} className={"slider__thums__single " + (state.activeThumb === index ? 'slider__thums__single--active' : '')}
+                        onClick={setImage.bind(null, index)}><img src={thumb.small}/></li>
+                )
+            });
+        
         return (
             <div className="slider">
-                <img className="slider__mainImg" src="http://lorempixel.com/750/420/"/>
+                <img className="slider__mainImg" src={data.main}/>
                 <ul className="slider__thums">
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/100/100/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/99/99/"/></li>
-                    <li className="slider__thums__single slider__thums__single--active"><img src="http://lorempixel.com/98/98/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/97/97/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/96/96/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/95/95/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/94/94/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/93/93/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/92/92/"/></li>
-                    <li className="slider__thums__single"><img src="http://lorempixel.com/91/91/"/></li>
+                    {thums}
                 </ul>
             </div>
         );

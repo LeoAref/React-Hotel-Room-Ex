@@ -1,20 +1,33 @@
 'use strict';
 
-var React = require('react'),
-    ReactDOM = require('react-dom');
+var React = require('react');
+
+// Components
+var Modal = require('../Common/modal.jsx');
 
 var Facilities = React.createClass({
     render: function () {
+        var data = this.props.data,
+            facilitiesList = data.map(function(facility, index) {
+                return (
+                    <li key={index} className="facilities__list__item"><i className={facility.class}></i>{facility.name}</li>
+                )
+            }),
+            modal = {
+                header: 'Room Facilities',
+                body: facilitiesList,
+                buttons: null,
+                id: 'facilitiesModal'
+            };
+        
         return (
             <div className="facilities">
                 <ul className="facilities__list clearfix">
-                    <li className="facilities__list__item"><i className="fa fa-wifi"></i>Free Wifi</li>
-                    <li className="facilities__list__item"><i className="fa fa-car"></i>Parking</li>
-                    <li className="facilities__list__item"><i className="fa fa-heart"></i>Spa</li>
-                    <li className="facilities__list__item"><i className="fa fa-photo"></i>Terras</li>
-                    <li className="facilities__list__item"><i className="fa fa-refresh"></i>Airconditioning</li>
-                    <li className="facilities__list__all">View all Facilities</li>
+                    {facilitiesList.slice(0, 5)}
+                    <li className="facilities__list__all" data-toggle="modal" data-target="#facilitiesModal">View all Facilities</li>
                 </ul>
+
+                <Modal modal={modal} />
             </div>
         );
     }

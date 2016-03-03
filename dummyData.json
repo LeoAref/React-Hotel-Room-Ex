@@ -1,0 +1,102 @@
+{
+    "hotelInfo": {
+        "name": "Park Plaza Victoria Amsterdam",
+        "rating": 4,
+        "address": "140 Gloucester Road, Kensington and Chelsea, London, SW7 4QH, United Kingdom",
+        "mapUrl": "https://goo.gl/zG8OWz"
+        
+    },
+    "slider": {
+        "main": "http://lorempixel.com/750/420/",
+        "thumbnails": [
+            {
+                "small": "http://lorempixel.com/100/100/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/99/99/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/98/98/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/97/97/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/96/96/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/95/95/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/94/94/",
+                "large": ""
+            },
+            {
+                "small": "http://lorempixel.com/93/93/",
+                "large": ""
+            }
+        ]
+    },
+    "offerWebsites": [
+        {
+            "img": "http://logonoid.com/images/hotels-com-logo.png",
+            "link": "?"
+        },
+        {
+            "img": "http://r-ec.bstatic.com/static/img/tfl/group_logos/logo_rentalcars/6bc5ec89d870111592a378bbe7a2086f0b01abc4.png",
+            "link": "?"
+        },
+        {
+            "img": "http://r-ec.bstatic.com/static/img/tfl/group_logos/logo_opentable/a4b50503eda6c15773d6e61c238230eb42fb050d.png",
+            "link": "?"
+        },
+        {
+            "img": "http://file.answcdn.com/answ-cld/image/upload/v1/tk/brand_image/74137196/658db2e5c8a82c3a94e1ee89f08f0a82249233e3.png",
+            "link": "?"
+        },
+        {
+            "img": "http://rccatalyst.com/wp-content/uploads/2015/04/New_Walmart_Logo.svg_.png",
+            "link": "?"
+        },
+        {
+            "img": "https://www.webtrends.com/wp-content/uploads/2014/11/webtrends_logo_gray.png",
+            "link": "?"
+        }
+    ],
+    "facilities": [
+        {
+            "name": "Free Wifi",
+            "class": "fa fa-wifi"
+        },
+        {
+            "name": "Parking",
+            "class": "fa fa-car"
+        },
+        {
+            "name": "Spa",
+            "class": "fa fa-heart"
+        },
+        {
+            "name": "Terras",
+            "class": "fa fa-photo"
+        },
+        {
+            "name": "Airconditioning",
+            "class": "fa fa-refresh"
+        },
+        {
+            "name": "Playgrounds",
+            "class": "fa fa-futbol-o"
+        },
+        {
+            "name": "Restaurants",
+            "class": "fa fa-cutlery"
+        }
+    ]
+}
