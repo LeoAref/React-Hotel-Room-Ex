@@ -8,7 +8,7 @@ var Map = React.createClass({
         
         return (
             <div className="map">
-                <h5 className="map__toggle visible-md"><button className="btn"><i className="fa fa-map-marker"></i>Show on map</button></h5>
+                <h5 className="map__toggle visible-md"><button className="btn" data-toggle="modal" data-target="#hotelMap"><i className="fa fa-map-marker"></i>Show on map</button></h5>
                 <iframe className="map__iframe hidden-md" src={mapUrl} style={{border: 0}} frameBorder="0" allowFullScreen></iframe>
             </div>
         );

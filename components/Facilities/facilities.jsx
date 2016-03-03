@@ -15,7 +15,7 @@ var Facilities = React.createClass({
             }),
             modal = {
                 header: 'Room Facilities',
-                body: facilitiesList,
+                body: (<ul className="facilities__list">{facilitiesList}</ul>),
                 buttons: null,
                 id: 'facilitiesModal'
             };
