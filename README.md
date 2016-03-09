@@ -21,3 +21,8 @@ Current gulp tasks:
  - styles
  - scripts
  - watch
+ 
+ ----------
+ Run tests
+ 
+     $ npm test

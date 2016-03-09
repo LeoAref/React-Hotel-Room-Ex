@@ -33,7 +33,7 @@ var RoomPage = React.createClass({
                 <section className="searchResults well text-center">
                     Search results will be here...
                 </section>
-            )
+            );
         } else {
             searchResults = '';
         }
@@ -60,4 +60,4 @@ var RoomPage = React.createClass({
 	}
 });
 
-ReactDOM.render(React.createElement(RoomPage, null), document.getElementById('RoomPageReact'));
+ReactDOM.render(<RoomPage />, document.getElementById('RoomPageReact'));

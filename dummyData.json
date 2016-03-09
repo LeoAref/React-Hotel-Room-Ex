@@ -7,39 +7,38 @@
         
     },
     "slider": {
-        "main": "http://lorempixel.com/750/420/",
         "thumbnails": [
             {
-                "small": "http://lorempixel.com/100/100/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/1",
+                "large": "http://lorempixel.com/750/420/sports/1"
             },
             {
-                "small": "http://lorempixel.com/99/99/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/2",
+                "large": "http://lorempixel.com/750/420/sports/2"
             },
             {
-                "small": "http://lorempixel.com/98/98/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/3",
+                "large": "http://lorempixel.com/750/420/sports/3"
             },
             {
-                "small": "http://lorempixel.com/97/97/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/9",
+                "large": "http://lorempixel.com/750/420/sports/9"
             },
             {
-                "small": "http://lorempixel.com/96/96/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/5",
+                "large": "http://lorempixel.com/750/420/sports/5"
             },
             {
-                "small": "http://lorempixel.com/95/95/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/6",
+                "large": "http://lorempixel.com/750/420/sports/6"
             },
             {
-                "small": "http://lorempixel.com/94/94/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/7",
+                "large": "http://lorempixel.com/750/420/sports/7"
             },
             {
-                "small": "http://lorempixel.com/93/93/",
-                "large": ""
+                "small": "http://lorempixel.com/750/420/sports/8",
+                "large": "http://lorempixel.com/750/420/sports/8"
             }
         ]
     },

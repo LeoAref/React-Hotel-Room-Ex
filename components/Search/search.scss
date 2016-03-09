@@ -7,6 +7,7 @@
     background: $blue;
     padding: 30px;
     box-shadow: 0 0 15px #131313;
+    transition: right 0.2s ease;
     
     &--loading {
         &:after {
@@ -21,6 +22,10 @@
         }
     }
 
+    &--closed {
+        right: -50%;
+    }
+    
     @include between($smallBp, $mediumBp) {
         padding: 25px;
     }
@@ -28,6 +33,28 @@
     @include smallerThan($xSmallBp) {
         position: relative;
         width: 100%;
+        right: 0 !important;
+    }
+    
+    &__toggle {
+        position: absolute;
+        top: 20px;
+        right: 100%;
+        width: 20px;
+        height: 20px;
+        background: $blue;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        white-space: nowrap;
+        
+        .fa {
+            line-height: 20px;
+        }
+        
+        @include smallerThan($xSmallBp) {
+            direction: none;
+        }
     }
 
     &__title, &__subTitle {

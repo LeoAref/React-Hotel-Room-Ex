@@ -5,18 +5,10 @@ var React = require('react');
 var Slider = React.createClass({
     getInitialState: function () {
         return ({
-            activeThumb: 3
+            activeThumb: 0
         });
     },
     setImage: function (index) {
-        var data = this.props.data;
-        
-        /*
-         * Later we will get {large} image src,
-         * and replace it with the {main} image src
-         * but we don't have actual data at this stage
-         */
-        
         this.setState({
             activeThumb: index
         });
@@ -34,7 +26,7 @@ var Slider = React.createClass({
         
         return (
             <div className="slider">
-                <img className="slider__mainImg" src={data.main}/>
+                <img className="slider__mainImg" src={data.thumbnails[state.activeThumb].large}/>
                 <ul className="slider__thums">
                     {thums}
                 </ul>

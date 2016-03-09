@@ -65,6 +65,11 @@ var Search = React.createClass({
     isSelected: function (that, state, day) {
         return DateUtils.isDayInRange(day, state);
     },
+    toggleSearch: function () {
+        this.setState({
+            isClosed: !this.state.isClosed
+        });
+    },
     render: function () {
         var data = this.props.data,
             state = this.state,
@@ -72,6 +77,7 @@ var Search = React.createClass({
             handleDayClick = this.handleDayClick,
             handleFormSubmit = this.handleFormSubmit,
             handleReset = this.handleReset,
+            toggleSearch = this.toggleSearch,
             websites = data.map(function(website, index) {
                 return (
                     <div key={index} className="search__footer__websites__single col-xs-4"><div className="content"><img src={website.img}/></div></div>
@@ -101,7 +107,10 @@ var Search = React.createClass({
             };
         
         return (
-            <div className={"search " + (state.loading ? 'search--loading' : '')}>
+            <div className={"search " + (state.loading ? 'search--loading' : '') + (state.isClosed ? 'search--closed' : '')}>
+                <div className="search__toggle" onClick={toggleSearch}>
+                    <i className={"fa fa-caret-" + (state.isClosed ? 'left' : 'right')}></i>
+                </div>
                 <h2 className="search__title">Select dates to view all prices</h2>
                 <h5 className="search__subTitle">Park Plaza Victoria Amsterdam</h5>
                 <form className="search__form" onSubmit={handleFormSubmit}>

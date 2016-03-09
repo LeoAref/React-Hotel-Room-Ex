@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-    moduleImporter = require('sass-module-importer'),
 	watch = require('gulp-watch'),
     babel = require('gulp-babel'),
     browserify = require('gulp-browserify');
@@ -20,9 +19,7 @@ gulp.task('scripts', function () {
 
 gulp.task('styles', function () {
 	return gulp.src('./searchBox.scss')
-		.pipe(sass({
-            importer: moduleImporter()
-        }))
+		.pipe(sass())
 		.on('error', sass.logError)
 		.pipe(gulp.dest('./build'));
 });
@@ -31,3 +28,5 @@ gulp.task('watch', function () {
 	gulp.watch(['*.scss', '**/*.scss'], ['styles']);
 	gulp.watch(['*.jsx', '**/*.jsx'], ['scripts']);
 });
+
+gulp.task('default', ['styles', 'scripts', 'watch']);
