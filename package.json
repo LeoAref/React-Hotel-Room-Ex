@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server -p 7777",
-    "test": "mocha './components/**/*.spec.jsx' --compilers jsx:specCompiler.js"
+    "test": "mocha './components/**/*.spec.jsx' --compilers jsx:specCompiler.js",
+    "install-prod": "npm i --production"
   },
   "author": "Muhammad Aref <muh.aref@live.com>",
   "license": "ISC",
