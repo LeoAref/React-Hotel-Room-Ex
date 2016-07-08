@@ -1,4 +1,4 @@
-@import url(./node_modules/react-day-picker/lib/style.css);
+@import url(../node_modules/react-day-picker/lib/style.css);
 .header {
   color: #717171; }
   .header__title {
