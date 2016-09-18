@@ -1,7 +1,7 @@
 
 **React** Hotel Room
 -----------------------------------
-![](https://david-dm.org/LeoAref/React-Hotel-Room-Ex.svg)
+[![david-dm](https://david-dm.org/LeoAref/React-Hotel-Room-Ex.svg)](https://david-dm.org/LeoAref/React-Hotel-Room-Ex)
 
 Install dependencies:
     
